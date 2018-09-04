@@ -21,9 +21,14 @@ namespace XML
         private void button1_Click(object sender, EventArgs e)
         {
             
-            string path = @"C:\Users\ShenBY\Desktop\date\DataFile\Bureau_WLMQ\Station_LTY\DevProps.xml";
+            //string path = @"C:\Users\ShenBY\Desktop\date\DataFile\Bureau_WLMQ\Station_LTY\DevProps.xml";
             DevProps devProps = new DevProps();
-            devProps.DevPropsLoad(path);
+            TrainWin trainWin = new TrainWin();
+            trainWin.DevPropsLoad();
+            dataGridView1.DataSource = DevProps.trainWins ;
+
+
         }
+
     }
 }

@@ -5,11 +5,14 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Xml;
+using System.Xml.Linq;
 
 namespace XML.XML
 {
+
     class DevProps
     {
+        string path = @"C:\Users\ShenBY\Desktop\date\DataFile\Bureau_WLMQ\Station_LTY\DevProps.xml";
         public DevProps()
         {
         }
@@ -18,48 +21,6 @@ namespace XML.XML
         {
             get { return type; }
             set { type = value; }
-        }
-        public List<TrainWin> trainWins = new List<TrainWin>();
-        public List<DevProps> devProps = new List<DevProps>();
-        public void DevPropsLoad(string path)
-        {
-            XmlDocument xmlDoc = new XmlDocument();
-            XmlReaderSettings settings = new XmlReaderSettings();
-            settings.IgnoreComments = true;
-            XmlReader reader = XmlReader.Create(path, settings);
-            xmlDoc.Load(reader);
-
-            if (xmlDoc != null)
-            {
-                XmlNodeList nodeList = xmlDoc.SelectNodes("/DevProps/Devs/TrainWin");
-                //foreach (XmlNode nodes in nodeList)
-                //{
-                //        Console.WriteLine(nodes.Attributes["DevType"].Value.ToString());
-                //        this.Type = nodes.Attributes["DevType"].Value.ToString();
-
-                    foreach (XmlNode node in nodeList)
-                    {
-                        TrainWin trainWin = new TrainWin();
-                        trainWin.name = node.Attributes["name"].Value.ToString();
-                    trainWin.name = node.Attributes["id"].Value.ToString();
-                    trainWin.Alias = node.Attributes["Alias"].Value.ToString();
-                    trainWin.ThroatType = node.Attributes["ThroatType"].Value.ToString();
-                    trainWin.RelatedDev = node.Attributes["RelatedDev"].Value.ToString();
-                    this.trainWins.Add(trainWin);
-                    Console.WriteLine(node.Attributes["name"].Value.ToString());
-             
-
-                    }
-                    this.devProps.Add(new DevProps);
-                //}
-            }
-            Console.WriteLine();
-        }
-    }
-    class TrainWin: DevProps
-    {
-        public TrainWin()
-        {
         }
         private string Name;
         public string name
@@ -91,6 +52,49 @@ namespace XML.XML
             get { return relatedDev; }
             set { relatedDev = value; }
         }
+
+        public static List<TrainWin> trainWins = new List<TrainWin>();
+        public List<DevProps> devProps = new List<DevProps>();
+        public XElement DevPropsLoad(string path)
+        {
+
+            XElement  xElement = XElement.Load(path);
+            return xElement;
+        }
+        public IEnumerable<XElement> Load( string devtype)
+        {
+         
+                IEnumerable<XElement> elementss = from el in DevPropsLoad(path).Elements("Devs")
+                                                 select el;
+                IEnumerable<XElement> elements = from el in elementss.Elements(devtype)
+                                                 select el;
+            
+            
+            return elements;
+        }
+    }
+    class TrainWin: DevProps
+    {
+        public TrainWin()
+        {
+        }
+        
+        public  void   DevPropsLoad()
+        {
+           
+            foreach (var ele in Load("TrainWin"))
+            {
+                TrainWin trainwin = new TrainWin();
+                trainwin.id = ele.Attribute("id").Value;
+                trainwin.name = ele.Attribute("name").Value;
+                trainwin.Alias= ele.Attribute("Alias").Value;
+                trainwin.RelatedDev= ele.Attribute("RelatedDev").Value;
+                trainwin.ThroatType= ele.Attribute("ThroatType").Value;
+                trainWins.Add(trainwin);
+            }
+
+        }
+        
         
 
     }
