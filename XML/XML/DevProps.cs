@@ -16,11 +16,11 @@ namespace XML.XML
         public DevProps()
         {
         }
-        private string type;
-        public string Type
+        private string Type;
+        public string type
         {
-            get { return type; }
-            set { type = value; }
+            get { return Type; }
+            set { Type = value; }
         }
         private string Name;
         public string name
@@ -51,6 +51,96 @@ namespace XML.XML
         {
             get { return relatedDev; }
             set { relatedDev = value; }
+        }
+        private string fieldNo;
+        public string FieldNo
+        {
+            get { return fieldNo; }
+            set { fieldNo = value; }
+        }
+        private string tSRLineNo;
+        public string TSRLineNo
+        {
+            get { return tSRLineNo; }
+            set { tSRLineNo = value; }
+        }
+        private string front;
+        public string Front
+        {
+            get { return front; }
+            set { front = value; }
+        }
+        private string back;
+        public string Back
+        {
+            get { return back; }
+            set { back = value; }
+        }
+        private string lFY;
+        public string LFY
+        {
+            get { return lFY; }
+            set { lFY = value; }
+        }
+        private string DevNoCmdCheck;
+        public string devNoCmdCheck
+        {
+            get { return DevNoCmdCheck; }
+            set { DevNoCmdCheck = value; }
+        }
+        private string DevNoCmdExe;
+        public string devNoCmdExe
+        {
+            get { return DevNoCmdExe; }
+            set { DevNoCmdExe = value; }
+        }
+        private string transparentDev;
+        public string TransparentDev
+        {
+            get { return transparentDev; }
+            set { transparentDev = value; }
+        }
+        private string bendPosition;
+        public string BendPosition
+        {
+            get { return bendPosition; }
+            set { bendPosition = value; }
+        }
+        private string switchNo;
+        public string SwitchNo
+        {
+            get { return switchNo; }
+            set { switchNo = value; }
+        }
+        private string backNormal;
+        public string BackNormal
+        {
+            get { return backNormal; }
+            set { backNormal = value; }
+        }
+        private string backReverse;
+        public string BackReverse
+        {
+            get { return backReverse; }
+            set { backReverse = value; }
+        }
+        private string Subtype;
+        public string subtype
+        {
+            get { return Subtype; }
+            set { Subtype = value; }
+        }
+        private string lineNo;
+        public string LineNo
+        {
+            get { return lineNo; }
+            set { lineNo = value; }
+        }
+        private string isComeBack;
+        public string IsComeBack
+        {
+            get { return isComeBack; }
+            set { isComeBack = value; }
         }
 
         public static List<TrainWin> trainWins = new List<TrainWin>();

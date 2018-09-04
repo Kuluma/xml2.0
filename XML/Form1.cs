@@ -25,7 +25,7 @@ namespace XML
             DevProps devProps = new DevProps();
             TrainWin trainWin = new TrainWin();
             trainWin.DevPropsLoad();
-            dataGridView1.DataSource = DevProps.trainWins ;
+            //dataGridView1.DataSource = DevProps.trainWins ;
 
 
         }
