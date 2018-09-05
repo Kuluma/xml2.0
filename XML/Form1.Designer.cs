@@ -30,6 +30,8 @@ namespace XML
         private void InitializeComponent()
         {
             this.button1 = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -42,14 +44,25 @@ namespace XML
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(112, 189);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowTemplate.Height = 23;
+            this.dataGridView1.Size = new System.Drawing.Size(590, 249);
+            this.dataGridView1.TabIndex = 1;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button1);
             this.Name = "Form1";
             this.Text = "Form1";
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -57,27 +70,7 @@ namespace XML
         #endregion
 
         private System.Windows.Forms.Button button1;
-        //private System.Windows.Forms.DataGridViewTextBoxColumn typeDataGridViewTextBoxColumn;
-        //private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
-        //private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
-        //private System.Windows.Forms.DataGridViewTextBoxColumn aliasDataGridViewTextBoxColumn;
-        //private System.Windows.Forms.DataGridViewTextBoxColumn throatTypeDataGridViewTextBoxColumn;
-        //private System.Windows.Forms.DataGridViewTextBoxColumn relatedDevDataGridViewTextBoxColumn;
-        //private System.Windows.Forms.DataGridViewTextBoxColumn fieldNoDataGridViewTextBoxColumn;
-        //private System.Windows.Forms.DataGridViewTextBoxColumn tSRLineNoDataGridViewTextBoxColumn;
-        //private System.Windows.Forms.DataGridViewTextBoxColumn frontDataGridViewTextBoxColumn;
-        //private System.Windows.Forms.DataGridViewTextBoxColumn backDataGridViewTextBoxColumn;
-        //private System.Windows.Forms.DataGridViewTextBoxColumn lFYDataGridViewTextBoxColumn;
-        //private System.Windows.Forms.DataGridViewTextBoxColumn devNoCmdCheckDataGridViewTextBoxColumn;
-        //private System.Windows.Forms.DataGridViewTextBoxColumn devNoCmdExeDataGridViewTextBoxColumn;
-        //private System.Windows.Forms.DataGridViewTextBoxColumn transparentDevDataGridViewTextBoxColumn;
-        //private System.Windows.Forms.DataGridViewTextBoxColumn bendPositionDataGridViewTextBoxColumn;
-        //private System.Windows.Forms.DataGridViewTextBoxColumn switchNoDataGridViewTextBoxColumn;
-        //private System.Windows.Forms.DataGridViewTextBoxColumn backNormalDataGridViewTextBoxColumn;
-        //private System.Windows.Forms.DataGridViewTextBoxColumn backReverseDataGridViewTextBoxColumn;
-        //private System.Windows.Forms.DataGridViewTextBoxColumn subtypeDataGridViewTextBoxColumn;
-        //private System.Windows.Forms.DataGridViewTextBoxColumn lineNoDataGridViewTextBoxColumn;
-        //private System.Windows.Forms.DataGridViewTextBoxColumn isComeBackDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }
 

@@ -12,9 +12,10 @@ namespace XML.XML
 
     class DevProps
     {
-        string path = @"C:\Users\ShenBY\Desktop\date\DataFile\Bureau_WLMQ\Station_LTY\DevProps.xml";
+        string path = FilePath.filePath+ "\\DevProps.xml";
         public DevProps()
         {
+           
         }
         private string Type;
         public string type
@@ -143,19 +144,21 @@ namespace XML.XML
             set { isComeBack = value; }
         }
 
-        public static List<TrainWin> trainWins = new List<TrainWin>();
-        public List<DevProps> devProps = new List<DevProps>();
-        public XElement DevPropsLoad(string path)
+        public static List<TrainWin> trainWins = new List<TrainWin>();   
+        private IEnumerable<XElement> elementss;
+        public IEnumerable<XElement> DevPropsLoad(string path)
         {
 
             XElement  xElement = XElement.Load(path);
-            return xElement;
+              elementss = from el in xElement.Elements("Devs")
+                                              select el;
+            
+            return elementss;
         }
         public IEnumerable<XElement> Load( string devtype)
         {
-         
-                IEnumerable<XElement> elementss = from el in DevPropsLoad(path).Elements("Devs")
-                                                 select el;
+
+            DevPropsLoad(path);
                 IEnumerable<XElement> elements = from el in elementss.Elements(devtype)
                                                  select el;
             
@@ -168,10 +171,8 @@ namespace XML.XML
         public TrainWin()
         {
         }
-        
-        public  void   DevPropsLoad()
+        public  void  TrainWinLoad()
         {
-           
             foreach (var ele in Load("TrainWin"))
             {
                 TrainWin trainwin = new TrainWin();
@@ -182,11 +183,7 @@ namespace XML.XML
                 trainwin.ThroatType= ele.Attribute("ThroatType").Value;
                 trainWins.Add(trainwin);
             }
-
         }
-        
-        
-
     }
     
 }

@@ -17,3 +17,4 @@ C:\Users\ShenBY\Desktop\XML\xml2.0\XML\bin\Debug\XML.exe
 C:\Users\ShenBY\Desktop\XML\xml2.0\XML\bin\Debug\XML.pdb
 C:\Users\ShenBY\Desktop\XML\xml2.0\XML\obj\Debug\XML.exe
 C:\Users\ShenBY\Desktop\XML\xml2.0\XML\obj\Debug\XML.pdb
+C:\Users\ShenBY\Desktop\XML\xml2.0\XML\obj\Debug\XML.csprojAssemblyReference.cache
