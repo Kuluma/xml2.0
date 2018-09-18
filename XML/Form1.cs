@@ -25,12 +25,13 @@ namespace XML
             
             
            
-            FilePath filePath = new FilePath();
-            filePath.GetFilePath(filePath.DirPath());
+            //FilePath filePath = new FilePath();
+            //filePath.GetFilePath(filePath.DirPath());
             DevProps devProps = new DevProps();
-            TrainWin trainWin = new TrainWin();
-            trainWin.TrainWinLoad();
-            dataGridView1.DataSource = DevProps.trainWins;
+            //TrainWin trainWin = new TrainWin();
+            //trainWin.TrainWinLoad();
+            devProps.DevPropsLoad();
+            //dataGridView1.DataSource = DevProps.trainWins;
            
 
         }

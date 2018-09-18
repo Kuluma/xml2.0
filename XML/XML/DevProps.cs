@@ -12,7 +12,8 @@ namespace XML.XML
 
     class DevProps
     {
-        string path = FilePath.filePath+ "\\DevProps.xml";
+        //string path = FilePath.filePath+ "\\DevProps.xml";
+        string path = @"C:\Users\ShenBY\Desktop\阜阳北\Data\Station_FB7\DevProps.xml";
         public DevProps()
         {
            
@@ -144,46 +145,77 @@ namespace XML.XML
             set { isComeBack = value; }
         }
 
-        public static List<TrainWin> trainWins = new List<TrainWin>();   
+       // public static List<TrainWin> trainWins = new List<TrainWin>();   
         private IEnumerable<XElement> elementss;
-        public IEnumerable<XElement> DevPropsLoad(string path)
+        public void DevPropsLoad()
         {
 
             XElement  xElement = XElement.Load(path);
               elementss = from el in xElement.Elements("Devs")
                                               select el;
-            
-            return elementss;
-        }
-        public IEnumerable<XElement> Load( string devtype)
-        {
+            XmlDocument doc = new XmlDocument();
 
-            DevPropsLoad(path);
-                IEnumerable<XElement> elements = from el in elementss.Elements(devtype)
-                                                 select el;
-            
-            
-            return elements;
+            doc.Load(path);
+            XmlNodeList Activity2Nodes = doc.SelectNodes("DevProps");
+            PrintChildNodes(Activity2Nodes);
         }
-    }
-    class TrainWin: DevProps
-    {
-        public TrainWin()
+        
+        static void PrintChildNodes(XmlNodeList childnodelist)
         {
-        }
-        public  void  TrainWinLoad()
-        {
-            foreach (var ele in Load("TrainWin"))
+            try
             {
-                TrainWin trainwin = new TrainWin();
-                trainwin.id = ele.Attribute("id").Value;
-                trainwin.name = ele.Attribute("name").Value;
-                trainwin.Alias= ele.Attribute("Alias").Value;
-                trainwin.RelatedDev= ele.Attribute("RelatedDev").Value;
-                trainwin.ThroatType= ele.Attribute("ThroatType").Value;
-                trainWins.Add(trainwin);
+                foreach (XmlNode node in childnodelist)
+                {
+                    //(node.NodeType 是Text时，即是最内层 即innertext值，node.Attributes为null。
+                    if (node.NodeType == XmlNodeType.Text)
+                    {
+                        Console.WriteLine("NodeType:" + node.NodeType + "\t" + node.Name + "\t:" + node.Value);
+                        continue;
+                    }
+                    Console.WriteLine("==========node.Name:" + node.Name + "===========");
+                    foreach (XmlAttribute atr in node.Attributes)
+                    {
+                        Console.WriteLine("NodeType:" + atr.NodeType + "\t" + atr.Name + "\t:" + atr.Value);
+                    }
+                    if (node.ChildNodes.Count > 0)
+                    {
+                        PrintChildNodes(node.ChildNodes);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
             }
         }
+        //public IEnumerable<XElement> Load( string devtype)
+        //{
+
+        //    DevPropsLoad(path);
+        //        IEnumerable<XElement> elements = from el in elementss.Elements(devtype)
+        //                                         select el;
+
+
+        //    return elements;
+        //}
+    }
+    //class TrainWin: DevProps
+    //{
+    //    public TrainWin()
+    //    {
+    //    }
+    //    public  void  TrainWinLoad()
+    //    {
+    //        foreach (var ele in Load("TrainWin"))
+    //        {
+    //            TrainWin trainwin = new TrainWin();
+    //            trainwin.id = ele.Attribute("id").Value;
+    //            trainwin.name = ele.Attribute("name").Value;
+    //            trainwin.Alias= ele.Attribute("Alias").Value;
+    //            trainwin.RelatedDev= ele.Attribute("RelatedDev").Value;
+    //            trainwin.ThroatType= ele.Attribute("ThroatType").Value;
+    //            trainWins.Add(trainwin);
+    //        }
+    //    }
     }
     
-}
